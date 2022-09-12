@@ -10,12 +10,12 @@
 
 int	main()
 {
-	DDRB |= _BV(DDB5);
+	*( (volatile uint8_t *) 0x24 ) |= _BV(DDB5);
 	while (1)
 	{
-		PORTB |= _BV(PORTB5);
+		*( (volatile uint8_t *) 0x25 ) |= _BV(PORTB5);
 		_delay_ms(MS_DELAY);
-		PORTB &= ~_BV(PORTB5);
+		*( (volatile uint8_t *) 0x25 ) &= ~_BV(PORTB5);
 		_delay_ms(MS_DELAY);
 	}
 }
